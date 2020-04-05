@@ -19,13 +19,13 @@ COVID tracking project.
 ## Routes
 Just look at `corona_stats/routes.py` for the routes used.
 As of this writing, there are two routes:
-    - `corona/byState/NY`: Where NY may we any state code (case-sensitive)
-    - `corona/allStates`
+- `corona/byState/NY`: Where NY may we any state code (case-sensitive)
+- `corona/allStates`
 
 ## Heroku
 This is currently live on heroku:
-    - All states: http://jrm-corona-flask.herokuapp.com/corona/allStates
-    - For New York: http://jrm-corona-flask.herokuapp.com/corona/byState/NY
+- All states: http://jrm-corona-flask.herokuapp.com/corona/allStates
+- For New York: http://jrm-corona-flask.herokuapp.com/corona/byState/NY
 
 
 # About
