@@ -1,12 +1,7 @@
-from bokeh.embed import components
 from bokeh.embed import file_html
-from bokeh.models import DatetimeTickFormatter
-
-from bokeh.resources import CDN
-from flask import Flask
-from flask_cors import CORS
 from bokeh.models.annotations import Title
-import numpy as np
+from bokeh.resources import CDN
+import sys
 
 from .data import (
     get_corona_data_by_state,
@@ -18,7 +13,9 @@ from .plots import get_cases_plot
 def cases_by_state(state_code):
     # Get the latest corona virus data.
 
+    print('getting dataframe', file=sys.stderr)
     df = get_corona_data_by_state(state_code)
+    print(f'Got dataframe', file=sys.stderr)
     last_updated = get_last_time_updated()
     title_text = (f'Cases for state {state_code}. Last downloaded: '
                   f' {last_updated}.')

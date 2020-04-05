@@ -1,9 +1,7 @@
 import numpy as np
-import pandas as pd
 from bokeh.models import ColumnDataSource
 from bokeh.models import HoverTool
 from bokeh.plotting import figure
-from bokeh.models import DatetimeTickFormatter
 
 
 #Helper function

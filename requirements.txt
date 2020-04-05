@@ -1,6 +1,5 @@
+gunicorn
 numpy
 pandas
 bokeh
 flask
-flask_cors
-Flask-Caching
