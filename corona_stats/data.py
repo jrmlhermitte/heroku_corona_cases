@@ -29,6 +29,15 @@ def get_corona_data() -> pd.DataFrame:
     return get_corona_data_from_file()
 
 
+def get_latest_corona_data():
+    df = get_corona_data()
+    # NOTE: There should not be more than one value per state. If this is not
+    # true, raise an error.
+    today = df['date'].max()
+    df_today = df[df['date'] == today]
+    return df_today
+
+
 def get_corona_data_by_state(state: str) -> pd.DataFrame:
     df = get_corona_data()
     return df[df['state'] == state]

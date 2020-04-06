@@ -1,21 +1,32 @@
 from bokeh.embed import file_html
 from bokeh.models.annotations import Title
 from bokeh.resources import CDN
-import sys
 
 from .data import (
     get_corona_data_by_state,
     get_last_time_updated,
-    get_corona_data_for_united_states)
-from .plots import get_cases_plot
+    get_corona_data_for_united_states,
+    get_latest_corona_data)
+from .plots.vbar_stacked import get_cases_plot
+from .plots.pie_chart import make_pie_chart
+
+
+def positive_pie_chart():
+    # Get the latest corona virus data.
+    df = get_latest_corona_data()
+    p = make_pie_chart(df, 'state', 'positive')
+
+    bokeh_title = Title()
+    bokeh_title.text = f'Positive Cases by state'
+    p.title = bokeh_title
+
+    return file_html(p, CDN, 'corona virus positive cases by state')
 
 
 def cases_by_state(state_code):
     # Get the latest corona virus data.
 
-    print('getting dataframe', file=sys.stderr)
     df = get_corona_data_by_state(state_code)
-    print(f'Got dataframe', file=sys.stderr)
     last_updated = get_last_time_updated()
     title_text = (f'Cases for state {state_code}. Last downloaded: '
                   f' {last_updated}.')
