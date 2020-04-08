@@ -3,8 +3,8 @@ import urllib.request
 
 import pandas as pd
 
-from .caching_decorator import cache_manager
-from .config import Config
+from corona_stats.caching_decorator import cache_manager
+from corona_stats.config import Config
 
 
 CORONA_VIRUS_BY_STATE_KEY = 'corona_virus_by_state'
@@ -54,3 +54,67 @@ def get_corona_data_for_united_states() -> pd.DataFrame:
 
 def get_last_time_updated() -> dt.datetime:
     return cache_manager.last_updated(CORONA_VIRUS_BY_STATE_KEY)
+
+
+def get_help_message():
+    return f'Available states: ' + ', '.join(STATES)
+
+
+STATES = [
+ 'AK',
+ 'AL',
+ 'AR',
+ 'AS',
+ 'AZ',
+ 'CA',
+ 'CO',
+ 'CT',
+ 'DC',
+ 'DE',
+ 'FL',
+ 'GA',
+ 'GU',
+ 'HI',
+ 'IA',
+ 'ID',
+ 'IL',
+ 'IN',
+ 'KS',
+ 'KY',
+ 'LA',
+ 'MA',
+ 'MD',
+ 'ME',
+ 'MI',
+ 'MN',
+ 'MO',
+ 'MP',
+ 'MS',
+ 'MT',
+ 'NC',
+ 'ND',
+ 'NE',
+ 'NH',
+ 'NJ',
+ 'NM',
+ 'NV',
+ 'NY',
+ 'OH',
+ 'OK',
+ 'OR',
+ 'PA',
+ 'PR',
+ 'RI',
+ 'SC',
+ 'SD',
+ 'TN',
+ 'TX',
+ 'UT',
+ 'VA',
+ 'VI',
+ 'VT',
+ 'WA',
+ 'WI',
+ 'WV',
+ 'WY'
+]

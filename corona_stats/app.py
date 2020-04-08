@@ -2,7 +2,13 @@ import os
 import sys
 
 from flask import Flask
-from .routes import cases_by_state, cases_for_united_states, positive_pie_chart
+from .routes import (
+    cases_by_state, cases_for_united_states, positive_pie_chart,
+    cases_canada_by_province)
+
+# TODO: rename this and move to routes
+from .data.us_data import get_help_message as us_message
+from .data.canada_data import get_help_message as canada_message
 
 
 def create_app(test_config=None):
@@ -31,18 +37,26 @@ def create_app(test_config=None):
     # a simple page that says hello
     app.route('/corona/byState/<string:state_code>')(cases_by_state)
 
+    app.route('/corona/canada/<string:province>')(cases_canada_by_province)
+
     # a simple page that says hello
     app.route('/corona/allStates')(cases_for_united_states)
     app.route('/corona')(positive_pie_chart)
 
     @app.route('/')
     def home():
-        return ('Welcome to Corona Stats. Routes: <br />'
-                '- <a href="/corona/allStates">/corona/allStates</a>: stats '
-                'for all states <br />'
-                '- <a href="/corona/byState/NY">/corona/byState/NY</a>: stats '
-                'for state. Replace NY with state <br />'
-                '- <a href="/corona">/corona</a>: Positive cases by state'
-                'code')
+        message = (
+            'Welcome to Corona Stats. Routes: <br />'
+            '- <a href="/corona/allStates">/corona/allStates</a>: stats '
+            'for all states <br />'
+            '- <a href="/corona/byState/NY">/corona/byState/NY</a>: stats '
+            'for state. Replace NY with state <br />'
+            '- <a href="/corona">/corona</a>: Positive cases by state'
+            'code <br />'
+            '- <a href="/corona/canada/Quebec">/corona/canada/Quebec</a>: '
+            'Positive cases by province. <br />')
+        message = message + '<br />' * 2 + us_message()
+        message = message + '<br />' * 2 + canada_message()
+        return message
 
     return app
