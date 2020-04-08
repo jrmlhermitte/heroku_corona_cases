@@ -3,3 +3,4 @@ numpy
 pandas
 bokeh
 flask
+plotly==4.1.0

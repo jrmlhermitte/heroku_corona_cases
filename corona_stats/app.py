@@ -3,8 +3,11 @@ import sys
 
 from flask import Flask
 from .routes import (
-    cases_by_state, cases_for_united_states, positive_pie_chart,
-    cases_canada_by_province)
+    cases_by_state,
+    cases_for_united_states,
+    positive_pie_chart,
+    cases_canada_by_province,
+    cases_for_canada)
 
 # TODO: rename this and move to routes
 from .data.us_data import get_help_message as us_message
@@ -42,6 +45,8 @@ def create_app(test_config=None):
     # a simple page that says hello
     app.route('/corona/allStates')(cases_for_united_states)
     app.route('/corona')(positive_pie_chart)
+
+    app.route('/corona/canada')(cases_for_canada)
 
     @app.route('/')
     def home():

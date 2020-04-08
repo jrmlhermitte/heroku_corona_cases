@@ -1,18 +1,21 @@
+import plotly
+import plotly.express as px
 from bokeh.embed import file_html
 from bokeh.models.annotations import Title
 from bokeh.resources import CDN
+from flask import render_template
 
+from .data.canada_data import (
+    get_canada_data_by_province,
+    get_last_time_canada_data_updated,
+    get_canada_corona_data)
 from .data.us_data import (
     get_corona_data_by_state,
     get_last_time_updated,
     get_corona_data_for_united_states,
     get_latest_corona_data)
-from .data.canada_data import (
-    get_canada_data_by_province,
-    get_last_time_canada_data_updated)
-
-from .plots.vbar_stacked import get_cases_plot
 from .plots.pie_chart import make_pie_chart
+from .plots.vbar_stacked import get_cases_plot
 
 
 def positive_pie_chart():
@@ -57,6 +60,17 @@ def cases_canada_by_province(province):
     p.title = bokeh_title
 
     return file_html(p, CDN, 'corona virus')
+
+
+def cases_for_canada():
+    df = get_canada_corona_data()
+    fig = px.scatter(df, x='date', y='numconf', color='prname')
+    offline_plot = plotly.offline.plot(fig,
+                                config={"displayModeBar": False},
+                                show_link=False,
+                                include_plotlyjs=False,
+                                output_type='div')
+    return render_template('canada.html', plot_data=offline_plot)
 
 
 def cases_for_united_states():
