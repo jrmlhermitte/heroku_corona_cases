@@ -1,43 +1,34 @@
-import numpy as np
-from bokeh.models import ColumnDataSource
-from bokeh.models import HoverTool
-from bokeh.plotting import figure
+import plotly.graph_objects as go
+
+from corona_stats.plots.plotly_plot import PlotlyPlot
 
 
-#Helper function
-def get_cases_plot(df):
-    source = ColumnDataSource(data=df)
+def get_plotly_cases_plot(df) -> PlotlyPlot:
+    """Returns javascript code."""
 
-    width = np.abs(df['date'].iloc[1] - df['date'].iloc[0])
-    bar_width = 0.7 * width
+    updatemenus = list([
+        dict(buttons=list([
+                 dict(label='Linear Scale',
+                      method='relayout',
+                      args=[{'yaxis.type': 'linear'}, ]),
+                 dict(label='Log Scale',
+                      method='relayout',
+                      args=[{'yaxis.type': 'log'}, ])
+             ]), )
+    ])
 
-    p = figure(plot_width=800,
-               plot_height=400,
-               x_axis_type='datetime')
+    fig = go.Figure(data=[
+        go.Bar(name='Positive Cases',
+               x=df['date'],
+               y=df['positiveIncrease'],
+               marker_color='#9B2208'),
+        go.Bar(name='Negative Cases',
+               x=df['date'],
+               y=df['negativeIncrease'],
+               marker_color='#C7ECDF')])
 
-    colors = ['#9B2208', '#C7ECDF']
-    bar_items = ['positiveIncrease', 'negativeIncrease']
-    renderers = p.vbar_stack(bar_items,
-                             x='date',
-                             width=bar_width,
-                             color=colors,
-                             source=source,
-                             legend_label=bar_items,
-                             name=bar_items)
-
-    p.xaxis.major_label_orientation = np.pi / 4
-
-    for r in renderers:
-        test_result = r.name
-        hover = HoverTool(
-            tooltips=[
-                ('%s total' % test_result, '@%s' % test_result),
-                ('date', '@date{%F}'),
-                ('totalIncrease', '@totalIncrease'),
-                ('index', '$index')
-            ],
-            renderers=[r],
-            formatters={'@date': 'datetime'})
-        p.add_tools(hover)
-
-    return p
+    # Change the bar mode
+    fig.update_layout(barmode='stack')
+    fig.update_layout(updatemenus=updatemenus)
+    # fig.update_layout(yaxis_type="log")
+    return PlotlyPlot(fig=fig)

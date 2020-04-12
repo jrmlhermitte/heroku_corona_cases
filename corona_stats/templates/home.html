@@ -1,15 +1,51 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="//cdn.bokeh.org/bokeh/release/bokeh-2.0.0.min.js" type="text/css" />
-    <script src="static/bokeh-2.0.0.min.js"
-        crossorigin="anonymous"></script>
-    
-  </head>
+    <script>
+        // Code to allow for moving to items selected from a drop-down
+        function goToNewPageForItem(item_id) {
+            if(document.getElementById(item_id).value){
+              window.location.href = document.getElementById(item_id).value;
+            }
+        }
+    </script>
+    <head>
+      <script src="/static/plotly-latest.min.js"></script>
+      <link rel="stylesheet" href="/static/bootstrap.min.css">
+      <style>body{ margin:0 100; background:whitesmoke; }</style>
+    </head>
   <body>
     <div class=page>
-      <h1>Current Corona Virus Cases</h1>
-      {{ script|safe }}
-      
+      <h1>Corona Virus Cases</h1>
+      <h2>Welcome to Corona Stats</h2>
+
+
+      <h2>Canada</h2>
+      <h3><a href="/corona/canada">All Provinces</a></h3>
+      <h3>Cases By Province</h3>
+
+      <form>
+        <select id="ca_provinces" onchange="goToNewPageForItem('ca_provinces')">
+          <option selected>Select a Canadian Province</option>
+          {% for item in ca_provinces %}
+          <option value="/corona/canada/{{ item }}">{{ item }}</option>
+          {% endfor %}
+        </select>
+      </form>
+
+      <h2>United States</h2>
+      <h3><a href="/corona/us">All States</a></h3>
+
+      <h3>Cases By State</h3>
+      <form>
+      <select id="us_states" onchange="goToNewPageForItem('us_states')">
+          <option selected>Select a US State</option>
+       {% for item in us_states %}
+          <option value="/corona/us/{{ item }}">{{ item }}</option>
+      {% endfor %}
+      </select>
+      </form>
+
+      {{ us_map | safe }}
+
     </div>
   </body>
 </html>

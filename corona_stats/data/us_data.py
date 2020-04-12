@@ -8,6 +8,7 @@ from corona_stats.config import Config
 
 
 CORONA_VIRUS_BY_STATE_KEY = 'corona_virus_by_state'
+CURRENT_CORONA_VIRUS_BY_STATE_KEY = 'current_corona_virus_by_state'
 
 
 def download_corona_data_file() -> None:
@@ -19,7 +20,29 @@ def get_corona_data_from_file() -> pd.DataFrame:
     df = pd.read_csv(Config.CORONA_DATA_FILENAME)
     df['date'] = pd.to_datetime(df['date'], format='%Y%m%d')
     df['totalIncrease'] = df['positiveIncrease'] + df['negativeIncrease']
-    return df
+    df_latlong = get_us_lat_long_coord()
+    return pd.merge(df, df_latlong, on='state', how='left')
+
+
+def download_current_corona_data_file() -> None:
+    urllib.request.urlretrieve(Config.CURRENT_CORONA_DATA_URL,
+                               Config.CURRENT_CORONA_DATA_FILENAME)
+
+
+def get_current_corona_data_from_file() -> pd.DataFrame:
+    df = pd.read_csv(Config.CURRENT_CORONA_DATA_FILENAME)
+    df_latlong = get_us_lat_long_coord()
+    return pd.merge(df, df_latlong, on='state', how='left')
+
+
+def get_us_lat_long_coord() -> pd.DataFrame:
+    # Found from https://raw.githubusercontent.com/jasperdebie/VisInfo/master
+    # /us-state-capitals.csv
+    # and I had to manually add state codes on top of it.
+    df = pd.read_csv(Config.US_LAT_LONG_FILENAME)
+    df['state'] = df['state_code']
+    # We ignore the city, we just need it for a good latitude and longitude.
+    return df[['state', 'latitude', 'longitude']]
 
 
 @cache_manager.memorize(CORONA_VIRUS_BY_STATE_KEY,
@@ -27,6 +50,12 @@ def get_corona_data_from_file() -> pd.DataFrame:
 def get_corona_data() -> pd.DataFrame:
     download_corona_data_file()
     return get_corona_data_from_file()
+
+@cache_manager.memorize(CURRENT_CORONA_VIRUS_BY_STATE_KEY,
+                        Config.CORONA_DATA_TIMEOUT_SEC)
+def get_current_corona_data() -> pd.DataFrame:
+    download_current_corona_data_file()
+    return get_current_corona_data_from_file()
 
 
 def get_latest_corona_data():
@@ -54,10 +83,6 @@ def get_corona_data_for_united_states() -> pd.DataFrame:
 
 def get_last_time_updated() -> dt.datetime:
     return cache_manager.last_updated(CORONA_VIRUS_BY_STATE_KEY)
-
-
-def get_help_message():
-    return f'Available states: ' + ', '.join(STATES)
 
 
 STATES = [

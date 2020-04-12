@@ -1,6 +1,5 @@
 gunicorn
 numpy
 pandas
-bokeh
 flask
-plotly==4.1.0
+plotly>=4.6.0

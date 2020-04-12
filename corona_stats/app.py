@@ -1,17 +1,13 @@
 import os
-import sys
 
-from flask import Flask
+from flask import Flask, render_template
+from .data.us_data import STATES
+from .data.canada_data import PROVINCES
 from .routes import (
     cases_by_state,
     cases_for_united_states,
-    positive_pie_chart,
     cases_canada_by_province,
     cases_for_canada)
-
-# TODO: rename this and move to routes
-from .data.us_data import get_help_message as us_message
-from .data.canada_data import get_help_message as canada_message
 
 
 def create_app(test_config=None):
@@ -37,31 +33,24 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    app.route('/corona/byState/<string:state_code>')(cases_by_state)
+    # US routes
+    app.route('/corona/us')(cases_for_united_states)
+    app.route('/corona/us/<string:state_code>')(cases_by_state)
 
+    # Canada routes
+    app.route('/corona/canada')(cases_for_canada)
     app.route('/corona/canada/<string:province>')(cases_canada_by_province)
 
-    # a simple page that says hello
-    app.route('/corona/allStates')(cases_for_united_states)
-    app.route('/corona')(positive_pie_chart)
-
-    app.route('/corona/canada')(cases_for_canada)
-
+    # Home route
     @app.route('/')
     def home():
-        message = (
-            'Welcome to Corona Stats. Routes: <br />'
-            '- <a href="/corona/allStates">/corona/allStates</a>: stats '
-            'for all states <br />'
-            '- <a href="/corona/byState/NY">/corona/byState/NY</a>: stats '
-            'for state. Replace NY with state <br />'
-            '- <a href="/corona">/corona</a>: Positive cases by state'
-            'code <br />'
-            '- <a href="/corona/canada/Quebec">/corona/canada/Quebec</a>: '
-            'Positive cases by province. <br />')
-        message = message + '<br />' * 2 + us_message()
-        message = message + '<br />' * 2 + canada_message()
-        return message
+        from .plots.bubble_map import get_us_bubble_map_plot
+        from .data.us_data import get_current_corona_data
+        df = get_current_corona_data()
+        fig = get_us_bubble_map_plot(df, size_key='death', size_name='Deaths')
+        return render_template('home.html',
+                               us_states=STATES,
+                               ca_provinces=PROVINCES,
+                               us_map=fig.to_javascript())
 
     return app

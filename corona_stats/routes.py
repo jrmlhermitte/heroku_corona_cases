@@ -1,88 +1,61 @@
-import plotly
-import plotly.express as px
-from bokeh.embed import file_html
-from bokeh.models.annotations import Title
-from bokeh.resources import CDN
 from flask import render_template
 
-from .data.canada_data import (
-    get_canada_data_by_province,
-    get_last_time_canada_data_updated,
-    get_canada_corona_data)
-from .data.us_data import (
-    get_corona_data_by_state,
-    get_last_time_updated,
-    get_corona_data_for_united_states,
-    get_latest_corona_data)
-from .plots.pie_chart import make_pie_chart
-from .plots.vbar_stacked import get_cases_plot
-
-
-def positive_pie_chart():
-    # Get the latest corona virus data.
-    df = get_latest_corona_data()
-    p = make_pie_chart(df, 'state', 'positive')
-
-    bokeh_title = Title()
-    bokeh_title.text = f'Positive Cases by state'
-    p.title = bokeh_title
-
-    return file_html(p, CDN, 'corona virus positive cases by state')
+from .data import canada_data
+from .data import us_data
+from .plots.vbar_stacked import get_plotly_cases_plot
 
 
 def cases_by_state(state_code):
     # Get the latest corona virus data.
 
-    df = get_corona_data_by_state(state_code)
-    last_updated = get_last_time_updated()
+    df = us_data.get_corona_data_by_state(state_code)
+    last_updated = us_data.get_last_time_updated()
     title_text = (f'Cases for state {state_code}. Last downloaded: '
                   f' {last_updated}.')
+    fig = get_plotly_cases_plot(df)
 
-    p = get_cases_plot(df)
-    bokeh_title = Title()
-    bokeh_title.text = title_text
-    p.title = bokeh_title
-
-    return file_html(p, CDN, 'corona virus')
+    return render_template('plotly_plot.html',
+                           plot_data=fig.to_javascript(),
+                           title=title_text)
 
 
 def cases_canada_by_province(province):
     # Get the latest corona virus data.
+    df = canada_data.get_canada_data_by_province(province)
 
-    df = get_canada_data_by_province(province)
-    last_updated = get_last_time_canada_data_updated()
-    title_text = (f'Canada cases for province {province}. Last downloaded: '
+    last_updated = canada_data.get_last_time_canada_data_updated()
+    title_text = (f'Canada cases for province {province}. '
+                  'Last downloaded: '
                   f' {last_updated}.')
 
-    p = get_cases_plot(df)
-    bokeh_title = Title()
-    bokeh_title.text = title_text
-    p.title = bokeh_title
+    fig = get_plotly_cases_plot(df)
 
-    return file_html(p, CDN, 'corona virus')
+    return render_template('plotly_plot.html',
+                           plot_data=fig.to_javascript(),
+                           title=title_text,
+                           description=canada_data.CANADA_DESCRIPTION)
 
 
 def cases_for_canada():
-    df = get_canada_corona_data()
-    fig = px.scatter(df, x='date', y='numconf', color='prname')
-    offline_plot = plotly.offline.plot(fig,
-                                config={"displayModeBar": False},
-                                show_link=False,
-                                include_plotlyjs=False,
-                                output_type='div')
-    return render_template('canada.html', plot_data=offline_plot)
+    df = canada_data.get_canada_data()
+    fig = get_plotly_cases_plot(df)
+    title_text = f'Canada Data'
+
+    return render_template('plotly_plot.html',
+                           plot_data=fig.to_javascript(),
+                           title=title_text,
+                           description=canada_data.CANADA_DESCRIPTION)
 
 
 def cases_for_united_states():
     # Get the latest corona virus data.
-    df = get_corona_data_for_united_states()
-    last_updated = get_last_time_updated()
+    df = us_data.get_corona_data_for_united_states()
+    last_updated = us_data.get_last_time_updated()
     title_text = (f'Cases for United States. Last downloaded: '
                   f' {last_updated}.')
 
-    p = get_cases_plot(df)
-    bokeh_title = Title()
-    bokeh_title.text = title_text
-    p.title = bokeh_title
+    fig = get_plotly_cases_plot(df)
 
-    return file_html(p, CDN, 'corona virus')
+    return render_template('plotly_plot.html',
+                           plot_data=fig.to_javascript(),
+                           title=title_text)
