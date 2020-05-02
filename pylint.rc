@@ -1,0 +1,20 @@
+[MASTER]
+
+[MESSAGES CONTROL]
+# Disable warnings that aren't useful to fix or too chatty.
+# More info here https://docs.pylint.org/en/1.6.0/features.html
+
+disable=
+    missing-module-docstring,
+    missing-function-docstring,
+    missing-class-docstring,
+    invalid-name,
+    too-few-public-methods,
+    fixme
+
+[MISCELLANEOUS]
+
+[TYPECHECK]
+
+[REPORTS]
+output-format=colorized

@@ -39,7 +39,7 @@ def cases_canada_by_province(province):
 def cases_for_canada():
     df = canada_data.get_canada_data()
     fig = get_plotly_cases_plot(df)
-    title_text = f'Canada Data'
+    title_text = 'Canada Data'
 
     return render_template('plotly_plot.html',
                            plot_data=fig.to_javascript(),

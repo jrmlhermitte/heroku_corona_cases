@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build_and_test:
+    docker:
+      - image: circleci/python:3.7-stretch-node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json checksum
+            # when this file is changed, this key will fail
+            - v1-poetry-deps-{{ checksum "poetry.lock" }}
+            # Find the most recently generated cache used from this branch
+            - v1-poetry-deps-{{ .Branch }}
+            # Find the most recently generated cache used from any branch
+            - v1-poetry-deps-
+      - run: ./scripts/bootstrap.sh
+      - run:
+          name: Install dependencies
+          command: poetry install
+      - save_cache:
+          key: v1-poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - .venv
+      - save_cache:
+          key: v1-poetry-deps-{{ checksum "poetry.lock" }}
+          paths:
+            - .venv
+      - run:
+          name: Run flake8
+          command: poetry run flake8
+      - run:
+          name: Run pylint
+          command: poetry run pylint
+      - run:
+          name: Run mypy
+          command: poetry run typechecking
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_and_test

@@ -1,0 +1,296 @@
+************* Module corona_stats.config
+corona_stats/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/config.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/config.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/config.py:10:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module corona_stats.caching_decorator
+corona_stats/caching_decorator.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/caching_decorator.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/caching_decorator.py:13:4: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/caching_decorator.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/caching_decorator.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/caching_decorator.py:13:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests
+tests/__init__.py:1:0: F0010: error while code parsing: Unable to load file tests/__init__.py:
+[Errno 2] No such file or directory: 'tests/__init__.py' (parse-error)
+************* Module corona_stats.data.canada_data
+corona_stats/data/canada_data.py:19:2: W0511: TODO: put this elsewhere (make a us and canada html template). (fixme)
+corona_stats/data/canada_data.py:58:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            df_by_province['numtested'].diff() /
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:59:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            time_intervals_days)
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:61:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            df_by_province['numconf'].diff() /
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:62:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            time_intervals_days)
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:64:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            df_by_province['totalIncrease'] -
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:65:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            df_by_province['positiveIncrease'])
+        |   ^ (bad-continuation)
+corona_stats/data/canada_data.py:44:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/canada_data.py:49:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/canada_data.py:50:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/canada_data.py:51:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/canada_data.py:69:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/canada_data.py:75:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/canada_data.py:87:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+************* Module corona_stats.plots.plotly_plot
+corona_stats/plots/plotly_plot.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/plots/plotly_plot.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/plots/plotly_plot.py:10:4: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/plots/plotly_plot.py:3:0: C0411: standard import "from dataclasses import dataclass" should be placed before "import plotly" (wrong-import-order)
+************* Module corona_stats.plots.bubble_map
+corona_stats/plots/bubble_map.py:8:2: W0511: TODO: incredibly messy, clean up. Separate out the data from the rest when (fixme)
+corona_stats/plots/bubble_map.py:41:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            title_text=title_text,
+        |   ^ (bad-continuation)
+corona_stats/plots/bubble_map.py:42:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            showlegend=True,
+        |   ^ (bad-continuation)
+corona_stats/plots/bubble_map.py:43:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            geo=dict(
+        |   ^ (bad-continuation)
+corona_stats/plots/bubble_map.py:57:0: C0330: Wrong hanging indentation (remove 4 spaces).
+            df['state'] + f'<br />{size_name}: ' + (df[size_key]).astype(str))
+        |   ^ (bad-continuation)
+corona_stats/plots/bubble_map.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/plots/bubble_map.py:10:0: C0103: Argument name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/plots/bubble_map.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/plots/bubble_map.py:22:8: W0612: Unused variable 'i' (unused-variable)
+corona_stats/plots/bubble_map.py:52:0: C0103: Argument name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/plots/bubble_map.py:83:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+corona_stats/plots/bubble_map.py:85:8: C0103: Variable name "w" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/plots/bubble_map.py:4:0: C0411: third party import "import pandas as pd" should be placed before "from .plotly_plot import PlotlyPlot" (wrong-import-order)
+corona_stats/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/config.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/config.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/config.py:10:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module corona_stats.plots.vbar_stacked
+corona_stats/plots/vbar_stacked.py:11:0: C0330: Wrong hanging indentation (remove 5 spaces).
+                 dict(label='Linear Scale',
+            |    ^ (bad-continuation)
+corona_stats/plots/vbar_stacked.py:14:0: C0330: Wrong hanging indentation (remove 5 spaces).
+                 dict(label='Log Scale',
+            |    ^ (bad-continuation)
+corona_stats/plots/vbar_stacked.py:17:0: C0330: Wrong hanging indentation.
+             ]), )
+        |   |^ (bad-continuation)
+corona_stats/plots/vbar_stacked.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/plots/vbar_stacked.py:6:0: C0103: Argument name "df" doesn't conform to snake_case naming style (invalid-name)
+************* Module corona_stats.data.us_data
+corona_stats/data/us_data.py:101:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'AK',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:102:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'AL',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:103:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'AR',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:104:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'AS',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:105:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'AZ',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:106:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'CA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:107:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'CO',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:108:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'CT',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:109:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'DC',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:110:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'DE',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:111:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'FL',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:112:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'GA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:113:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'GU',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:114:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'HI',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:115:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'IA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:116:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'ID',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:117:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'IL',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:118:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'IN',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:119:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'KS',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:120:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'KY',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:121:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'LA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:122:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:123:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MD',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:124:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'ME',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:125:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MI',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:126:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MN',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:127:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MO',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:128:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MP',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:129:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MS',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:130:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'MT',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:131:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NC',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:132:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'ND',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:133:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NE',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:134:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NH',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:135:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NJ',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:136:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NM',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:137:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NV',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:138:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'NY',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:139:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'OH',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:140:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'OK',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:141:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'OR',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:142:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'PA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:143:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'PR',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:144:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'RI',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:145:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'SC',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:146:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'SD',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:147:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'TN',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:148:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'TX',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:149:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'UT',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:150:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'VA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:151:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'VI',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:152:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'VT',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:153:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'WA',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:154:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'WI',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:155:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'WV',
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:156:0: C0330: Wrong hanging indentation (add 3 spaces).
+ 'WY'
+ ^  | (bad-continuation)
+corona_stats/data/us_data.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/data/us_data.py:15:0: C0103: Class name "DATA_ELEMENT" doesn't conform to PascalCase naming style (invalid-name)
+corona_stats/data/us_data.py:21:8: C0103: Attribute name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+corona_stats/data/us_data.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:31:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:44:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:45:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:54:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:62:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:68:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:73:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:74:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:82:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:83:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:87:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:88:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:89:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/data/us_data.py:96:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/data/us_data.py:9:0: C0411: standard import "from dataclasses import dataclass" should be placed before "import pandas as pd" (wrong-import-order)
+corona_stats/data/us_data.py:10:0: C0411: standard import "from typing import Union" should be placed before "import pandas as pd" (wrong-import-order)
+************* Module corona_stats.routes
+corona_stats/routes.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/routes.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/routes.py:11:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/routes.py:22:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/routes.py:24:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/routes.py:39:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/routes.py:40:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/routes.py:42:17: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+corona_stats/routes.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/routes.py:52:4: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+************* Module corona_stats.app
+corona_stats/app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+corona_stats/app.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
+corona_stats/app.py:47:8: C0415: Import outside toplevel (plots.bubble_map.get_us_bubble_map_plot) (import-outside-toplevel)
+corona_stats/app.py:48:8: C0415: Import outside toplevel (data.us_data.get_current_corona_data) (import-outside-toplevel)
+corona_stats/app.py:49:8: C0103: Variable name "df" doesn't conform to snake_case naming style (invalid-name)
+corona_stats/app.py:46:4: W0612: Unused variable 'home' (unused-variable)

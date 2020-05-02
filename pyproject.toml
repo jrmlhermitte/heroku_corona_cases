@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "corona_stats"
+version = "0.1.0"
+description = ""
+authors = ["Julien <jrmlhermitte@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+gunicorn = "^20.0.4"
+flask = "^1.1.2"
+pandas = "^1.0.3"
+numpy = "^1.18.3"
+plotly = "4.6.0"
+mypy = "^0.770"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7.9"
+pylint = "^2.5.0"
+mypy = "^0.770"
+black = "^19.10b0"
+
+[tool.poetry.scripts]
+pylint = "tasks:run_pylint"
+flake8 = "tasks:run_flake8"
+typechecking = "tasks:run_typechecking"
+
+[build-system]
+requires = ["poetry>=1.0.4"]
+build-backend = "poetry.masonry.api"
+

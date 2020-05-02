@@ -1,7 +1,7 @@
-import plotly.graph_objects as go
-from .plotly_plot import PlotlyPlot
-
 import pandas as pd
+import plotly.graph_objects as go
+
+from .plotly_plot import PlotlyPlot
 
 
 # Followed: https://plotly.com/python/bubble-maps/
@@ -19,7 +19,7 @@ def get_us_bubble_map_plot(df, size_key='death', size_name='Deaths'):
 
     fig = go.Figure()
 
-    for i, df_g in df_for_plotting.groupby('size_category'):
+    for _, df_g in df_for_plotting.groupby('size_category'):
         # Get first item, hack for now
         size_color = df_g.iloc[0]['size_color']
         size_category_text = df_g.iloc[0]['size_category_text']
@@ -38,12 +38,12 @@ def get_us_bubble_map_plot(df, size_key='death', size_name='Deaths'):
             name=size_category_text))
 
     fig.update_layout(
-            title_text=title_text,
-            showlegend=True,
-            geo=dict(
-                scope='usa',
-                landcolor='rgb(217, 217, 217)',
-            )
+        title_text=title_text,
+        showlegend=True,
+        geo=dict(
+            scope='usa',
+            landcolor='rgb(217, 217, 217)',
+        )
         )
 
     return PlotlyPlot(fig=fig)
@@ -54,7 +54,7 @@ def _compute_bubble_map_categories(df, size_key='death', size_name='Deaths'):
 
     # text per state
     df['text'] = (
-            df['state'] + f'<br />{size_name}: ' + (df[size_key]).astype(str))
+        df['state'] + f'<br />{size_name}: ' + (df[size_key]).astype(str))
     # We remove anything missing lat and long, for example: "AS" (American
     # Samoa).
     has_latitude_long = pd.notna(df['latitude']) & pd.notna(df['longitude'])
@@ -80,9 +80,8 @@ def _compute_bubble_map_categories(df, size_key='death', size_name='Deaths'):
     df['size_color'] = 'grey'
     df['size_category_text'] = 'unknown'
 
-    for i in range(len(limits)):
-        lim = limits[i]
-        w = (df[size_key] >= lim[0]) * (df[size_key] < lim[1])
+    for i, lim in enumerate(limits):
+        w = (df[size_key] >= lim[0]) & (df[size_key] < lim[1])
         df.loc[w, 'size_category'] = i
         df.loc[w, 'size_category_text'] = '{0} - {1}'.format(lim[0], lim[1])
         df.loc[w, 'size_color'] = colors[i]
