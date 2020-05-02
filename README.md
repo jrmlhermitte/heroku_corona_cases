@@ -3,7 +3,6 @@ This server currently just plots current corona virus testing results per state
 in the US. Each plot presents the number of positive and negative tests per day
 per state.
 
-
 Simple server for plotting out corona virus cases.
 Using [plotly](https://plotly.com/python/plotly-express).
 
