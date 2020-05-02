@@ -29,6 +29,34 @@ Visit the `/` route for more information.
 This is currently live on heroku [here](http://jrm-corona-flask.herokuapp.com).
 
 
+# Setup
+## Commands
+
+### Update requirements for the flask server
+Requirements are managed using poetry. However, heroku uses the traditional requirements.txt file. When updating dependencies with poetry, this requirements file must be manually updated:
+```bash
+make update_requirements
+```
+
+### Update poetry lock file
+```bash
+poetry lock
+```
+
+
+### Install current package requirements from lock file
+```bash
+poetry install
+```
+
+### Run linting
+```bash
+poetry run flake8
+poetry run pylint
+poetry run typechecking
+```
+
+
 # About
 Just wanted to have my own custom statistics and learn about heroku, but I hope
 this might be useful for others. I don't intend on maintaining this.

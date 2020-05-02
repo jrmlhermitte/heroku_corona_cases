@@ -5,8 +5,8 @@ Canada data pulled from:
 """
 
 
-import urllib.request
 import datetime as dt
+import urllib.request
 
 import pandas as pd
 
@@ -30,10 +30,8 @@ CANADA_DESCRIPTION = (
     'for more information.')
 
 
-
-
 PROVINCES = [
-    'Ontario', 'British Columbia','Quebec', 'Alberta',
+    'Ontario', 'British Columbia', 'Quebec', 'Alberta',
     'Repatriated travellers', 'Saskatchewan', 'Manitoba',
     'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia',
     'Prince Edward Island', 'Yukon', 'Northwest Territories',
@@ -57,14 +55,14 @@ def get_canada_data_by_province(province: str):
     time_intervals_days = time_intervals.apply(lambda x: x.days)
 
     df_by_province.loc[:, 'totalIncrease'] = (
-            df_by_province['numtested'].diff() /
-            time_intervals_days)
+        df_by_province['numtested'].diff() /
+        time_intervals_days)
     df_by_province.loc[:, 'positiveIncrease'] = (
-            df_by_province['numconf'].diff() /
-            time_intervals_days)
+        df_by_province['numconf'].diff() /
+        time_intervals_days)
     df_by_province.loc[:, 'negativeIncrease'] = (
-            df_by_province['totalIncrease'] -
-            df_by_province['positiveIncrease'])
+        df_by_province['totalIncrease'] -
+        df_by_province['positiveIncrease'])
     return df_by_province
 
 
@@ -80,8 +78,9 @@ def get_data_from_gov_canada() -> pd.DataFrame:
 
 
 def _download_canada_data():
-    urllib.request.urlretrieve(Config.CANADA_DATA_URL,
-                               Config.CANADA_CORONA_DATA_FILENAME)
+    if not Config.OFFLINE_MODE:
+        urllib.request.urlretrieve(Config.CANADA_DATA_URL,
+                                   Config.CANADA_CORONA_DATA_FILENAME)
 
 
 def _get_canada_corona_data_from_file() -> pd.DataFrame:

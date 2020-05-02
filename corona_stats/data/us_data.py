@@ -1,19 +1,29 @@
 import datetime as dt
 import urllib.request
+from dataclasses import dataclass
+from typing import Union
 
 import pandas as pd
 
 from corona_stats.caching_decorator import cache_manager
 from corona_stats.config import Config
 
-
 CORONA_VIRUS_BY_STATE_KEY = 'corona_virus_by_state'
 CURRENT_CORONA_VIRUS_BY_STATE_KEY = 'current_corona_virus_by_state'
 
+DATA_ELEMENT = Union[int, float, dt.datetime]
+
+
+@dataclass
+class USData:
+    def __init__(self, df: pd.DataFrame):
+        self.df = df
+
 
 def download_corona_data_file() -> None:
-    urllib.request.urlretrieve(Config.CORONA_DATA_URL,
-                               Config.CORONA_DATA_FILENAME)
+    if not Config.OFFLINE_MODE:
+        urllib.request.urlretrieve(Config.CORONA_DATA_URL,
+                                   Config.CORONA_DATA_FILENAME)
 
 
 def get_corona_data_from_file() -> pd.DataFrame:
@@ -25,8 +35,9 @@ def get_corona_data_from_file() -> pd.DataFrame:
 
 
 def download_current_corona_data_file() -> None:
-    urllib.request.urlretrieve(Config.CURRENT_CORONA_DATA_URL,
-                               Config.CURRENT_CORONA_DATA_FILENAME)
+    if not Config.OFFLINE_MODE:
+        urllib.request.urlretrieve(Config.CURRENT_CORONA_DATA_URL,
+                                   Config.CURRENT_CORONA_DATA_FILENAME)
 
 
 def get_current_corona_data_from_file() -> pd.DataFrame:
@@ -86,60 +97,60 @@ def get_last_time_updated() -> dt.datetime:
 
 
 STATES = [
- 'AK',
- 'AL',
- 'AR',
- 'AS',
- 'AZ',
- 'CA',
- 'CO',
- 'CT',
- 'DC',
- 'DE',
- 'FL',
- 'GA',
- 'GU',
- 'HI',
- 'IA',
- 'ID',
- 'IL',
- 'IN',
- 'KS',
- 'KY',
- 'LA',
- 'MA',
- 'MD',
- 'ME',
- 'MI',
- 'MN',
- 'MO',
- 'MP',
- 'MS',
- 'MT',
- 'NC',
- 'ND',
- 'NE',
- 'NH',
- 'NJ',
- 'NM',
- 'NV',
- 'NY',
- 'OH',
- 'OK',
- 'OR',
- 'PA',
- 'PR',
- 'RI',
- 'SC',
- 'SD',
- 'TN',
- 'TX',
- 'UT',
- 'VA',
- 'VI',
- 'VT',
- 'WA',
- 'WI',
- 'WV',
- 'WY'
+    'AK',
+    'AL',
+    'AR',
+    'AS',
+    'AZ',
+    'CA',
+    'CO',
+    'CT',
+    'DC',
+    'DE',
+    'FL',
+    'GA',
+    'GU',
+    'HI',
+    'IA',
+    'ID',
+    'IL',
+    'IN',
+    'KS',
+    'KY',
+    'LA',
+    'MA',
+    'MD',
+    'ME',
+    'MI',
+    'MN',
+    'MO',
+    'MP',
+    'MS',
+    'MT',
+    'NC',
+    'ND',
+    'NE',
+    'NH',
+    'NJ',
+    'NM',
+    'NV',
+    'NY',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'PR',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VA',
+    'VI',
+    'VT',
+    'WA',
+    'WI',
+    'WV',
+    'WY'
 ]

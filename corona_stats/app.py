@@ -1,8 +1,11 @@
 import os
 
 from flask import Flask, render_template
-from .data.us_data import STATES
+
 from .data.canada_data import PROVINCES
+from .data.us_data import STATES
+from .data.us_data import get_current_corona_data
+from .plots.bubble_map import get_us_bubble_map_plot
 from .routes import (
     cases_by_state,
     cases_for_united_states,
@@ -11,6 +14,7 @@ from .routes import (
 
 
 def create_app(test_config=None):
+    # pylint: disable=unused-variable
     # create and configure the app
     config = {
         'DEBUG': True,  # some Flask specific configs
@@ -44,8 +48,6 @@ def create_app(test_config=None):
     # Home route
     @app.route('/')
     def home():
-        from .plots.bubble_map import get_us_bubble_map_plot
-        from .data.us_data import get_current_corona_data
         df = get_current_corona_data()
         fig = get_us_bubble_map_plot(df, size_key='death', size_name='Deaths')
         return render_template('home.html',

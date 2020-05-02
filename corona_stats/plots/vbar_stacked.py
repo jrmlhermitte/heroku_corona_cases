@@ -8,13 +8,13 @@ def get_plotly_cases_plot(df) -> PlotlyPlot:
 
     updatemenus = list([
         dict(buttons=list([
-                 dict(label='Linear Scale',
-                      method='relayout',
-                      args=[{'yaxis.type': 'linear'}, ]),
-                 dict(label='Log Scale',
-                      method='relayout',
-                      args=[{'yaxis.type': 'log'}, ])
-             ]), )
+            dict(label='Linear Scale',
+                 method='relayout',
+                 args=[{'yaxis.type': 'linear'}, ]),
+            dict(label='Log Scale',
+                 method='relayout',
+                 args=[{'yaxis.type': 'log'}, ])
+        ]), )
     ])
 
     fig = go.Figure(data=[

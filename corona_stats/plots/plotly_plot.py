@@ -1,6 +1,7 @@
+from dataclasses import dataclass
+
 import plotly
 from plotly.graph_objects import Figure
-from dataclasses import dataclass
 
 
 @dataclass
