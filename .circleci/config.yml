@@ -5,30 +5,30 @@ jobs:
       - image: circleci/python:3.7-stretch-node
     steps:
       - checkout
+      - run:
+          name: Print current working directory
+          command: pwd
       - restore_cache:
           keys:
             # Find a cache corresponding to this specific package-lock.json checksum
             # when this file is changed, this key will fail
-            - v1-poetry-deps-{{ checksum "poetry.lock" }}
+            - v2-poetry-deps-{{ checksum "poetry.lock" }}
             # Find the most recently generated cache used from this branch
-            - v1-poetry-deps-{{ .Branch }}
+            - v2-poetry-deps-{{ .Branch }}
             # Find the most recently generated cache used from any branch
-            - v1-poetry-deps-
+            - v2-poetry-deps-
       - run: ./scripts/bootstrap.sh
       - run:
           name: Install dependencies
           command: poetry install
       - save_cache:
-          key: v1-poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          key: v2-poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - .venv
-      - save_cache:
-          key: v1-poetry-deps-{{ checksum "poetry.lock" }}
-          paths:
-            - .venv
+            - /home/circleci/.cache/pre-commit
       - run:
           name: Lint
-          command: pre-commit run --all-files
+          command: poetry run precommit
       - run:
           name: pylint (slower, not run as pre-commit hook)
           command: poetry run pylint

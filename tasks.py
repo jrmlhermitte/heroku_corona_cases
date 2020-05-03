@@ -25,3 +25,7 @@ def run_typechecking():
 
 def run_flake8():
     _run_command("python -m flake8 corona_stats tests")
+
+
+def run_precommit():
+    _run_command("pre-commit run --all-files")

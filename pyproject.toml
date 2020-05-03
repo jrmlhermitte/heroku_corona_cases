@@ -11,24 +11,17 @@ flask = "^1.1.2"
 pandas = "^1.0.3"
 numpy = "^1.18.3"
 plotly = "4.6.0"
-mypy = "^0.770"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.5.0"
+pre-commit = "^2.3.0"
 
 [tool.poetry.scripts]
 pylint = "tasks:run_pylint"
 flake8 = "tasks:run_flake8"
 typechecking = "tasks:run_typechecking"
+precommit = "tasks:run_precommit"
 
 [build-system]
 requires = ["poetry>=1.0.4"]
 build-backend = "poetry.masonry.api"
-
-# black-compatible isort
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-line_length = 79
