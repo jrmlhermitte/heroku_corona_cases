@@ -1,5 +1,5 @@
-import subprocess as sp
 import shlex
+import subprocess as sp
 import sys
 
 
@@ -15,17 +15,17 @@ def _run_command(command: str) -> sp.CompletedProcess:
 def run_pylint():
     # Only run across changed files
     _run_command(
-        'python -m pylint '
-        '--rcfile=pylint.rc '
-        '-j 8 '
-        'corona_stats tests')
+        "python -m pylint " "--rcfile=pylint.rc " "-j 8 " "corona_stats tests"
+    )
 
 
 def run_typechecking():
-    _run_command('python -m mypy -p corona_stats -p tests')
+    _run_command("python -m mypy -p corona_stats -p tests")
 
 
 def run_flake8():
-    _run_command('python -m flake8 corona_stats tests')
+    _run_command("python -m flake8 corona_stats tests")
 
-# TODO: Add the black code formatter check (format and check no files changed)
+
+def run_precommit():
+    _run_command("pre-commit run --all-files")

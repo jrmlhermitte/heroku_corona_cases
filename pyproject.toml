@@ -11,20 +11,17 @@ flask = "^1.1.2"
 pandas = "^1.0.3"
 numpy = "^1.18.3"
 plotly = "4.6.0"
-mypy = "^0.770"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.7.9"
 pylint = "^2.5.0"
-mypy = "^0.770"
-black = "^19.10b0"
+pre-commit = "^2.3.0"
 
 [tool.poetry.scripts]
 pylint = "tasks:run_pylint"
 flake8 = "tasks:run_flake8"
 typechecking = "tasks:run_typechecking"
+precommit = "tasks:run_precommit"
 
 [build-system]
 requires = ["poetry>=1.0.4"]
 build-backend = "poetry.masonry.api"
-

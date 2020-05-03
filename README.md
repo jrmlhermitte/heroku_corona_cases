@@ -14,7 +14,7 @@ The data is at most 10 minutes out of date with the data from the
 COVID tracking project. The data being downloaded is updated less frequently.
 
 ### Canada Data
-Canada data comes from the government of 
+Canada data comes from the government of
 Canada [website](https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html).
 The data is at most 10 minutes out of date. The data being downloaded is updated less frequently.
 

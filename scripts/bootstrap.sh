@@ -18,9 +18,16 @@ function install_poetry_if_needed(){
 }
 
 
+function setup_precommit() {
+  pip install pre-commit
+}
+
+
+
 # List functions to install here.
 function bootstrap(){
   install_poetry_if_needed
+  setup_precommit
 }
 
 

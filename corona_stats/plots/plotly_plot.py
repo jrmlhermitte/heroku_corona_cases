@@ -14,4 +14,5 @@ class PlotlyPlot:
             config={"displayModeBar": False},
             show_link=False,
             include_plotlyjs=False,
-            output_type='div')
+            output_type="div",
+        )
