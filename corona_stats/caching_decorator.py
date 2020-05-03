@@ -1,10 +1,9 @@
+import datetime as dt
 import threading
 import time
-import datetime as dt
 
 
 class CacheManager:
-
     def __init__(self):
         self._timestamps = {}
         self._cache = {}
@@ -41,7 +40,9 @@ class CacheManager:
                     self._timestamps[cache_key] = now + period
                     self._last_updated[cache_key] = now
                     return ret
+
             return _caching_wrapper
+
         return _decoration_wrapper
 
 

@@ -14,10 +14,7 @@ plotly = "4.6.0"
 mypy = "^0.770"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.7.9"
 pylint = "^2.5.0"
-mypy = "^0.770"
-black = "^19.10b0"
 
 [tool.poetry.scripts]
 pylint = "tasks:run_pylint"
@@ -28,3 +25,10 @@ typechecking = "tasks:run_typechecking"
 requires = ["poetry>=1.0.4"]
 build-backend = "poetry.masonry.api"
 
+# black-compatible isort
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 79
