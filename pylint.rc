@@ -1,4 +1,5 @@
 [MASTER]
+ignore=CVS
 
 [MESSAGES CONTROL]
 # Disable warnings that aren't useful to fix or too chatty.
@@ -10,7 +11,24 @@ disable=
     missing-class-docstring,
     invalid-name,
     too-few-public-methods,
-    fixme
+    fixme,
+    bad-indentation,
+    design,
+    invalid-name,
+    line-too-long,
+    missing-docstring,
+    no-else-return,
+    protected-access,
+    bad-continuation,
+    broad-except,
+    global-statement,
+    len-as-condition,
+    redefined-outer-name,
+    ungrouped-imports,
+    unused-argument,
+    no-self-use,
+    anomalous-backslash-in-string,
+    c-extension-no-member,
 
 [MISCELLANEOUS]
 

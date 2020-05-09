@@ -1,11 +1,12 @@
-from dataclasses import dataclass
 import datetime as dt
+import functools
+from dataclasses import dataclass
 from typing import List, Tuple
+
+import pandas as pd
+
 from corona_stats.data.country import Country
 from corona_stats.data.numerical_range import NumericalRange
-import pandas as pd
-import functools
-
 
 # Arbitrary
 _LRU_CACHE_SIZE = 400

@@ -29,9 +29,9 @@ jobs:
       - run:
           name: Lint
           command: poetry run precommit
-      - run:
-          name: pylint (slower, not run as pre-commit hook)
-          command: poetry run pylint
+#      - run:
+#          name: pylint (slower, not run as pre-commit hook)
+#          command: poetry run pylint
 
 workflows:
   version: 2

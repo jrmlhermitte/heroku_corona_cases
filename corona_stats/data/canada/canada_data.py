@@ -5,18 +5,16 @@ Canada data pulled from:
 """
 from __future__ import annotations
 
-
 import datetime as dt
 import urllib.request
+from dataclasses import dataclass
 
 import pandas as pd
 
-from corona_stats.data.corona_data_versus_time import CoronaDataVersusTime
 from corona_stats.caching_decorator import cache_manager
 from corona_stats.config import Config
-from dataclasses import dataclass
+from corona_stats.data.corona_data_versus_time import CoronaDataVersusTime
 from corona_stats.data.country import Country
-
 
 CANADA_DATA_KEY = "canada-data"
 

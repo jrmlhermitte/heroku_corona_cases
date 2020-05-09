@@ -1,12 +1,12 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
+
 import plotly
-
-
 import plotly.graph_objects as go
+
 from corona_stats.data.corona_data_by_region import CoronaDataByRegion
 from corona_stats.data.country import Country
-
 from corona_stats.plots.models.quantile_to_plot import QuantileToPlot
 
 SHADE_OF_GREY = "rgb(217, 217, 217)"

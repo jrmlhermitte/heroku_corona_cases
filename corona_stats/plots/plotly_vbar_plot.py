@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from corona_stats.data.corona_data_versus_time import CoronaDataVersusTime
-import pandas as pd
 
+import pandas as pd
 import plotly
 import plotly.graph_objects as go
 
+from corona_stats.data.corona_data_versus_time import CoronaDataVersusTime
 
 linear_scale_button = {
     "label": "Linear Scale",

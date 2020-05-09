@@ -1,10 +1,11 @@
 from flask import render_template
 
-from .data.us import us_data
-from .data.canada import canada_data
-from corona_stats.plots.plotly_vbar_plot import PlotlyVBarPlot
-from .data.canada.provinces import PROVINCES
 from corona_stats.plots.plotly_bubble_map import PlotlyBubbleMap
+from corona_stats.plots.plotly_vbar_plot import PlotlyVBarPlot
+
+from .data.canada import canada_data
+from .data.canada.provinces import PROVINCES
+from .data.us import us_data
 from .data.us.current_us_data import get_current_corona_data
 from .data.us.states import STATES
 

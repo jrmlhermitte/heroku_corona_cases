@@ -1,17 +1,17 @@
+import datetime as dt
 import urllib.request
+from dataclasses import dataclass
 
 import pandas as pd
 
 from corona_stats.caching_decorator import cache_manager
 from corona_stats.config import Config
-from corona_stats.data.us.us_data import CURRENT_CORONA_VIRUS_BY_STATE_KEY
-from corona_stats.data.country import Country
-import datetime as dt
 from corona_stats.data.corona_data_by_region import (
     CoronaDataByRegion,
     RegionCoronaData,
 )
-from dataclasses import dataclass
+from corona_stats.data.country import Country
+from corona_stats.data.us.us_data import CURRENT_CORONA_VIRUS_BY_STATE_KEY
 
 
 @dataclass

@@ -1,6 +1,8 @@
-import pandas as pd
 import datetime as dt
 from dataclasses import dataclass
+
+import pandas as pd
+
 from corona_stats.data.country import Country
 
 
