@@ -143,3 +143,6 @@ instance/
 
 # pycharm
 .idea/*
+
+# vscode
+.vscode

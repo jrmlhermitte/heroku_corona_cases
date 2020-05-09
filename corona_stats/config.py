@@ -29,4 +29,4 @@ class Config:
     US_LAT_LONG_FILENAME = THIS_MODULE_DIR + "/data/csv/us_state_capitals.csv"
 
     # disables downloading, make sure you have data downloaded first
-    OFFLINE_MODE = False
+    OFFLINE_MODE = os.environ.get("OFFLINE_MODE") or False

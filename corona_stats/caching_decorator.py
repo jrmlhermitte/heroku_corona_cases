@@ -1,4 +1,3 @@
-import datetime as dt
 import threading
 import time
 
@@ -7,10 +6,6 @@ class CacheManager:
     def __init__(self):
         self._timestamps = {}
         self._cache = {}
-        self._last_updated = {}
-
-    def last_updated(self, key) -> dt.datetime:
-        return dt.datetime.fromtimestamp(self._last_updated.get(key))
 
     # https://stackoverflow.com/questions/21156519/python-cache-memorize-and
     # -thread-locking
@@ -38,7 +33,6 @@ class CacheManager:
                     ret = func(*args, **kwargs)
                     self._cache[cache_key] = ret
                     self._timestamps[cache_key] = now + period
-                    self._last_updated[cache_key] = now
                     return ret
 
             return _caching_wrapper

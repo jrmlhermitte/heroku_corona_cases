@@ -1,0 +1,19 @@
+<html>
+<head>
+    <script src="/static/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <style>body{ margin:0 100; background:whitesmoke; }</style>
+</head>
+<body>
+<h1>{{ title }}</h1>
+NOTE: It appears that some cases are confirmed positive
+the following day. This can lead to an apparent decrease in negative
+cases one day (a case was negative but is now confirmed "
+positive).
+This data was pulled from gov canada, please see
+'<a href="https://www.canada.ca/en/public-health/services'
+    '/diseases/2019-novel-coronavirus-infection.html">here</a> '
+for more information.
+{{ plot_data | safe }}
+</body>
+</html>

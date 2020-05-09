@@ -50,9 +50,8 @@ poetry install
 
 ### Run linting
 ```bash
-poetry run flake8
+poetry run precommit
 poetry run pylint
-poetry run typechecking
 ```
 
 

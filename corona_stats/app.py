@@ -1,15 +1,13 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask
 
-from .data.canada_data import PROVINCES
-from .data.us_data import STATES, get_current_corona_data
-from .plots.bubble_map import get_us_bubble_map_plot
 from .routes import (
     cases_by_state,
     cases_canada_by_province,
     cases_for_canada,
     cases_for_united_states,
+    home,
 )
 
 
@@ -43,15 +41,6 @@ def create_app(test_config=None):
     app.route("/corona/canada/<string:province>")(cases_canada_by_province)
 
     # Home route
-    @app.route("/")
-    def home():
-        df = get_current_corona_data()
-        fig = get_us_bubble_map_plot(df, size_key="death", size_name="Deaths")
-        return render_template(
-            "home.html",
-            us_states=STATES,
-            ca_provinces=PROVINCES,
-            us_map=fig.to_javascript(),
-        )
+    app.route("/")(home)
 
     return app
